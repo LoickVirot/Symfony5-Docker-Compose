@@ -1,8 +1,6 @@
 # nginx/Dockerfile
 FROM debian:jessie
 
-
-RUN echo 'deb http://ftp.debian.org/debian jessie-backports main' | tee /etc/apt/sources.list.d/backports.list
 RUN apt-get update && apt-get install -y nginx
 
 ADD nginx.conf /etc/nginx/

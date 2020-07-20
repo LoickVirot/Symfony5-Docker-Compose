@@ -9,7 +9,7 @@ services:
             - "./.data/db:/var/lib/mysql"
         environment:
             MYSQL_ROOT_PASSWORD: root
-    php:
+    symfony:
         build: php-fpm
         ports:
             - 9000:9000
@@ -17,13 +17,12 @@ services:
             - db:mysqldb
         volumes:
             - ./www:/var/www/symfony
-            - ./logs/symfony:/var/www/symfony/var/logs
     nginx:
         build: nginx
         ports:
             - 8000:80
         links:
-            - php
+            - symfony:php
         volumes:
-            - ./logs/nginx/:/var/log/nginx
+            - ./server-logs/nginx/:/var/log/nginx
             - ./www:/var/www/symfony

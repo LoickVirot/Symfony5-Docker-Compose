@@ -25,8 +25,6 @@ RUN "date"
 
 # Type docker-php-ext-install to see available extensions
 RUN docker-php-ext-configure intl
-RUN docker-php-ext-install pdo pdo_mysql intl
-
-RUN echo 'alias sf="php app/console"' >> ~/.bashrc
+RUN docker-php-ext-install pdo pdo_mysql intl opcache
 
 WORKDIR /var/www/symfony
